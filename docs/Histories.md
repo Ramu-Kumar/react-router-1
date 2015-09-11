@@ -94,6 +94,14 @@ app.listen(port)
 console.log("server started on port " + port)
 ```
 
+If you are hosting your application as a static html file and your server runs apache (Most cheap hosts already do), you can create a `.htaccess` file in the root to redirect all urls to index.html with the exception of `images/` `css/` and `fonts/`.
+
+```
+RewriteEngine on
+RewriteCond $1 !^(index\.html|images|css|fonts)
+RewriteRule ^(.*)$ ./index.html [L]
+```
+
 ### IE8, IE9 Support
 
 We feature detect to see if we can use the browser's native `History`
